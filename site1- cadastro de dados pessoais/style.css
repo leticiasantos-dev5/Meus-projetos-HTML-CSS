@@ -1,0 +1,133 @@
+@charset "UTF-8";
+body { background-image: linear-gradient(to right, #64113F 10%, #DE4D86, #EFF2C0 );
+    background-attachment: fixed;
+
+} /*#64113F  #DE4D86 #EFF2C0  #58A4B0 #094D92 paleta*/ 
+
+main{
+    background-color: white; /* Fundo branco */
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px;
+    padding: 20px;
+    margin: auto;
+    height: auto; /*Adapta a altura de acordo com o conteúdo.*/
+    flex-wrap: wrap;
+
+
+    
+     /*PARTE QUE DEIXA O SITE PROPORCIONAL A VARIOS TAMANHOS DE APARELHOS  -->*/
+
+    max-width: 1000px; /*Mantém um limite 
+    máximo de largura para telas maiores.*/
+
+    box-sizing: border-box; /*e as bordas sejam considerados no cálculo da largura, evitando que o elemento "estoure" o layout..*/
+
+    width: 90%; /*largura flexível proporcional à tela..*/
+        
+
+}
+
+h1 {
+
+    font-style: oblique;
+    font-weight: bolder;
+    font-size: 50px;
+    text-align: center;
+    font-family: serif;
+
+}
+h2{ font-style: oblique;
+    font-weight: bold;
+    font-size: 25px;
+    text-align: center;
+    font-family: serif
+
+
+}
+
+p{
+    text-indent: 20px;
+    text-align: justify;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+    line-height: 1.8;
+    font-size: 1.2em;
+    
+
+}
+
+form{
+    font-family: serif;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+label {
+    display: block;
+    text-align: justify;
+    margin: 10px;
+    font-style: oblique;
+    font-size: 22px;
+}
+
+label {
+    display: block; /* Garante que as labels fiquem em blocos separados */
+    text-align: justify; /* Centraliza o texto */
+    font-size: px; /* Ajusta o tamanho da fonte */
+    margin: 10px 0; /* Adiciona espaçamento entre as labels */
+    display: block; /* Força cada label a ficar em sua própria linha */
+    margin: 10px 0 5px; /* Espaçamento entre o label e o campo */
+
+}
+
+label::before {
+    content: "●"; /* Adiciona uma bolinha como marcador */
+    font-size: 14px; /* Ajusta o tamanho da bolinha */
+    color: black; /* Define a cor da bolinha */
+    margin-right: 10px; /* Adiciona espaço entre a bolinha e o texto */
+
+}
+
+
+/* Centralizar o conteúdo na página */
+body {
+    display: flex; /* Define um layout flexível */
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Altura total da tela */
+    margin: 0; /* Remove as margens padrão */
+    background-color: #f0f0f0; /* Cor de fundo opcional */
+}
+
+/* Estilo para o campo de entrada */
+input {
+    display: block;
+    width: 100%; /* Faz o campo preencher a largura do formulário */
+    padding: 10px; /* Espaçamento interno */
+    margin-bottom: 15px; /* Espaço entre os campos */
+    border: 1px solid #ccc; /* Cor da borda */
+    border-radius: 5px; /* Bordas arredondadas */
+    font-size: 16px; /* Tamanho do texto */
+    box-sizing: border-box; /* Inclui o padding dentro do tamanho total */
+}
+
+
+button {
+    width: 150px; /* Largura do botão */
+    height: 50px; /* Altura do botão */
+    background-color: #de4d8798; /*  Cor de fundo do botão*/
+    color: #ffffff; /* Cor do texto */
+    font-size: 16px;  /* Tamanho da fonte */
+    border: none; /* Remove a borda padrão */
+    border-radius: 8px; /* Bordas arredondadas (opcional) */
+    cursor: pointer; /* Alterar o cursor ao passar o mouse */
+    
+
+}
+/* Efeito ao passar o mouse */
+button:hover {
+    background-color: #DE4D86;  /* Cor mais escura no hover */
+}
+
+ 
+
+
