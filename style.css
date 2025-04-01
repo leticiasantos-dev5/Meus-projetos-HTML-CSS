@@ -1,0 +1,165 @@
+@charset "UTF-8";
+
+/*PALETA: #274659  #D9A679 #D99C79 #A6442E  #592C28*/
+
+button {
+    width: 160px;
+    height: 50px;
+    background-color: #175a86c3;
+    display: block;
+    margin: auto;
+}
+
+.container {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    flex-direction: ; /* Organiza os inputs verticalmente */
+}
+
+input {
+    width: 100%; /* Faz a caixinha ocupar toda a largura do contêiner */
+    max-width: 400px; /* Define um limite máximo para não ficar muito grande */
+    height: 50px; /* Aumenta a altura para uma melhor experiência de digitação */
+    padding: 12px; /* Adiciona espaçamento interno para o texto não ficar apertado */
+    font-size: 18px; /* Deixa o texto dentro das caixinhas maior e mais legível */
+    border-radius: 8px; /* Bordas arredondadas para um visual mais moderno */
+    border: 2px solid #034161; /* Adiciona uma borda destacada */
+    display: block; /* Garante que cada input fique em linha separada */
+    margin: 10px auto; /* Centraliza os inputs e adiciona espaçamento */
+}
+
+
+
+a {
+    color: white;
+    text-align: justify;
+    text-decoration: none;
+    font-weight: lighter;
+}
+
+
+
+body{
+    background-image: linear-gradient(to left, #D9A679, #D99C79, #A6442E,  #592C28 );
+    background-attachment: fixed;
+}
+
+main {
+    background-color: aliceblue;
+    display: block;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    width: 85%; /* Aumenta a largura para ocupar mais espaço */
+    max-width: 1000px; /* Limita a largura máxima */
+    padding: 50px; /* Ajusta o espaçamento interno */
+    margin: 20px auto; /* Reduz a margem superior e inferior para ocupar mais espaço */
+}
+
+
+
+.container {
+    display: flex; /* Organiza os itens lado a lado */
+    justify-content: space-around; /* Espaça uniformemente os itens */
+    align-items: center; /* Centraliza verticalmente os menus */
+    background-color:#0000008e; /* Fundo escuro */
+    padding: 10px 0; /* Espaçamento interno */
+    position: fixed; /* Fixa no topo da página */
+    width: 100%; /* Ocupa toda a largura da janela */
+    top: 0; /* Fixa no topo */
+    z-index: 1000; /* Garante que fique acima do restante do conteúdo */
+}
+
+.container div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #0d2433; /* Cor das caixinhas */
+    color: white; /* Cor do texto */
+    border: 1px solid black; /* Borda simples */
+    border-radius: 8px; /* Bordas arredondadas */
+    width: 200px; /* Largura fixa dos menus */
+    height: 50px; /* Altura fixa dos menus */
+    font-family: 'Arial', sans-serif; /* Fonte elegante */
+    font-size: 14px;
+    cursor: pointer; /* Cursor ao passar o mouse */
+    text-align: center;
+    margin: 0 5px; /* Espaço entre os menus */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra para destaque */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+}
+
+/* Efeito ao passar o mouse */
+.container div:hover {
+    
+    background-color: #A6442E ;
+    transform: scale(1.05); /* Efeito de zoom */
+}
+
+
+/* Ajustando o espaçamento do conteúdo principal */
+body {
+    margin: 0;
+    padding: 0;
+    padding-top: 70px; /* Espaço suficiente para que o conteúdo não fique atrás dos menus */
+}
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: oblique;
+    font-size: 150px;
+    display: block;
+    color: #0d2433;
+    font-weight: bolder;
+    border: 10PX;
+    font-style: normal;
+    text-align: center;
+    text-shadow: 2px 2px 2px #3c95ed;
+    
+}
+#corpodotexto {
+    font-size: 25px;
+    background-color: rgba(255, 255, 255, 0.495);
+    display: block;
+
+    }
+
+    h2{
+        
+        font-weight: bold;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: center;
+        font-size: 50px;
+        color: #0d2433;
+        text-shadow: 2px 2px 2px #3c95ed;
+    
+        
+    
+    
+    }
+
+    .final-container {
+        display: flex; /* Organiza os itens lado a lado */
+        justify-content: center; /* Centraliza horizontalmente */
+        align-items: center; /* Centraliza verticalmente */
+        gap: 10px; /* Adiciona espaço entre os elementos */
+    }
+    
+    .final {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #0d2433; /* Cor das caixinhas */
+        color: white; /* Cor do texto */
+        border: 1px solid black; /* Borda simples */
+        border-radius: 8px; /* Bordas arredondadas */
+        width: 200px; /* Largura fixa dos menus */
+        height: 50px; /* Altura fixa dos menus */
+        font-family: 'Arial', sans-serif; /* Fonte elegante */
+        font-size: 14px;
+        cursor: pointer; /* Cursor ao passar o mouse */
+        text-align: center;
+        margin: 0; /* Remove margens laterais para evitar espaçamentos excessivos */
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra para destaque */
+    }
+    
+    
