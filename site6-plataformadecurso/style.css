@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+/*PALETA: #274659  #D9A679 #D99C79 #A6442E  #592C28*/
+body{
+    background-color: #274659
+}
+
+/* Barra de navegação no topo */
+.container {
+    display: flex; /* Organiza os itens lado a lado */
+    justify-content: space-around; /* Espaça uniformemente os itens */
+    align-items: center; /* Centraliza verticalmente os menus */
+    background-color:#0000008e; /* Fundo escuro */
+    padding: 10px 0; /* Espaçamento interno */
+    position: fixed; /* Fixa no topo da página */
+    width: 100%; /* Ocupa toda a largura da janela */
+    top: 0; /* Fixa no topo */
+    z-index: 1000; /* Garante que fique acima do restante do conteúdo */
+}
+
+/* Estilo dos menus */
+.container div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #592C28; /* Cor das caixinhas */
+    color: white; /* Cor do texto */
+    border: 1px solid black; /* Borda simples */
+    border-radius: 8px; /* Bordas arredondadas */
+    width: 150px; /* Largura fixa dos menus */
+    height: 40px; /* Altura fixa dos menus */
+    font-family: 'Arial', sans-serif; /* Fonte elegante */
+    font-size: 14px;
+    cursor: pointer; /* Cursor ao passar o mouse */
+    text-align: center;
+    margin: 0 5px; /* Espaço entre os menus */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra para destaque */
+}
+
+/* Efeito ao passar o mouse */
+.container div:hover {
+    background-color: #A6442E;
+    transform: scale(1.05); /* Efeito de zoom */
+}
+
+/* Ajustando o espaçamento do conteúdo principal */
+body {
+    margin: 0;
+    padding: 0;
+    padding-top: 70px; /* Espaço suficiente para que o conteúdo não fique atrás dos menus */
+}
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: oblique;
+    font-size: 150px;
+    display: block;
+    color: #070707;
+    background-color: rgba(255, 255, 255, 0.495);
+    font-weight: bolder;
+    border: 10PX;
+    font-style: ;
+}
+#corpodotexto {
+    font-size: 25px;
+    background-color: rgba(255, 255, 255, 0.495);
+
+    }
+
+    h2{
+        background-color: rgba(255, 255, 255, 0.495);
+        font-weight: bold;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
