@@ -2,6 +2,18 @@
 
 /*PALETA: #274659  #D9A679 #D99C79 #A6442E  #592C28*/
 
+.logo-container {
+    display: flex; /* Alinha os elementos lado a lado */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 15px; /* Adiciona espaço entre imagem e texto */
+}
+
+.logo-container img {
+    width: 100px; /* Ajuste o tamanho da imagem conforme necessário */
+    height: auto;
+}
+
+
 button {
     width: 160px;
     height: 50px;
@@ -116,12 +128,22 @@ h1 {
     text-shadow: 2px 2px 2px #3c95ed;
     
 }
+
 #corpodotexto {
     font-size: 25px;
     background-color: rgba(255, 255, 255, 0.495);
     display: block;
+    padding: 20px; /* Adiciona espaço interno */
+}
 
-    }
+#corpodotexto p {
+    margin: 10px 0; /* Espaçamento entre parágrafos */
+}
+
+    
+    
+
+    
 
     h2{
         

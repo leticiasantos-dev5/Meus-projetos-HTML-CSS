@@ -38,6 +38,15 @@ a {
     font-weight: lighter;
 }
 
+.especial a {
+    text-decoration: none; /* Sem sublinhado inicialmente */
+}
+
+.especial a:hover {
+    text-decoration: underline; /* Sublinhado ao passar o mouse */
+}
+
+
 
 
 body{
@@ -160,6 +169,28 @@ h1 {
         text-align: center;
         margin: 0; /* Remove margens laterais para evitar espaçamentos excessivos */
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Sombra para destaque */
+    }
+
+    #aluno{
+        text-align: center;
+        color: brown;
+        text-decoration: solid;
+        font-size: 45px;
+    }
+    img{
+        width: 400px;
+        margin: auto;
+        display: flex;
+    }
+
+    h3 {
+        font-weight:bold;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        text-align: justify;
+        font-size: 28px;
+        color:#66312c;
+        text-shadow: 2px 2px 2px #3c94ed00;
+        
     }
     
     
