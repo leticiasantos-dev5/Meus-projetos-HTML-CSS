@@ -1,19 +1,351 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema da Auto Mecânica Claudio</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sistema da Auto Mecânica Claudio</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f8f8;
+      margin: 0;
+    }
+    header {
+      background-color: #004aad;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+    header img {
+      height: 50px;
+    }
+    .main-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px 20px;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    main {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+      box-sizing: border-box;
+    }
+    h2, h3 {
+      text-align: center;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    input, select, textarea, button {
+      display: block;
+      padding: 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 15px;
+    }
+    button {
+      background-color: #004aad;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #00307a;
+    }
+    .botoes {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    /* Para separar cada peça adicionada */
+    #pecas-container > div {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+    #historico {
+      max-width: 300px;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-height: 600px;
+      overflow-y: auto;
+    }
+    #historico h3 {
+      margin-top: 0;
+      text-align: center;
+    }
+    #historico div.recibo {
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+    }
+    #historico div.recibo:last-child {
+      border-bottom: none;
+    }
+    #historico button {
+      background-color: #e74c3c;
+      margin-top: 5px;
+      font-size: 12px;
+      padding: 5px;
+    }
+  </style>
 </head>
-
 <body>
-    <main>
-        <header>
-        <h1>Auto Mecânica Claudio</h1>
+  <header>
+    <img src="logo.png" alt="Logo da Mecânica" id="logo" />
+    <div>
+      <h1>Auto Mecânica Claudio</h1>
+      <h2>Recibos</h2>
+    </div>
+  </header>
 
-    </header>
+  <div class="main-container">
+    <main>
+      <label>Data: <input type="date" id="data" /></label>
+      <label>Cliente: <input type="text" id="cliente" /></label>
+      <label>Carro: <input type="text" id="carro" /></label>
+      <label>Ano: <input type="text" id="ano" /></label>
+      <label>Placa: <input type="text" id="placa" /></label>
+
+      <h3>Peças</h3>
+      <div id="pecas-container"></div>
+      <!-- Botão para adicionar peça -->
+      <button onclick="adicionarPeca()">Adicionar Peça</button>
+
+      <h3>Serviços</h3>
+      <textarea id="servicos" rows="4"></textarea>
+
+      <label>Mão de Obra: <input type="number" id="maoDeObra" oninput="atualizarTotal()" /></label>
+      <label>Total Peças + Mão de Obra: <input type="number" id="total" readonly /></label>
+      <label>Valor Pago: <input type="number" id="pago" /></label>
+
+      <label>Status do Pagamento:
+        <select id="statusPagamento">
+          <option value="">Selecione</option>
+          <option value="Pago">Pago</option>
+          <option value="A Pagar">A Pagar</option>
+        </select>
+      </label>
+
+      <div class="botoes">
+        <button onclick="salvarHistorico()">Salvar</button>
+        <button onclick="gerarPDF()">Gerar e Baixar PDF</button>
+      </div>
     </main>
 
-    
+    <section id="historico">
+      <h3>Histórico de Recibos Salvos</h3>
+      <div id="lista-historico"></div>
+    </section>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script>
+    function adicionarPeca() {
+      const container = document.getElementById("pecas-container");
+      const div = document.createElement("div");
+      div.innerHTML = `
+        <label>Nome da Peça: <input type="text" class="nome-peca" placeholder="Digite o nome da peça" /></label>
+        <label>Valor Unitário: <input type="number" class="valor-peca" placeholder="Digite o valor" oninput="atualizarTotal()" /></label>
+        <label>Quantidade:
+          <select class="quantidade-peca" onchange="atualizarTotal()">
+            ${[...Array(10)].map((_, i) => `<option value="${i+1}">${i+1}</option>`).join('')}
+          </select>
+        </label>
+      `;
+      container.appendChild(div);
+      atualizarTotal();
+    }
+
+    function atualizarTotal() {
+      const valores = document.querySelectorAll('.valor-peca');
+      const quantidades = document.querySelectorAll('.quantidade-peca');
+      let totalPecas = 0;
+      valores.forEach((val, i) => {
+        const preco = parseFloat(val.value) || 0;
+        const qtd = parseInt(quantidades[i].value) || 1;
+        totalPecas += preco * qtd;
+      });
+      const maoDeObra = parseFloat(document.getElementById("maoDeObra").value) || 0;
+      document.getElementById("total").value = totalPecas + maoDeObra;
+    }
+
+    // Função para salvar o recibo no histórico no localStorage
+    function salvarHistorico() {
+      const recibo = coletarDadosFormulario();
+      if (!recibo.cliente) {
+        alert("Por favor, preencha o nome do cliente antes de salvar.");
+        return;
+      }
+
+      let historico = JSON.parse(localStorage.getItem("historicoRecibos")) || [];
+      historico.push(recibo);
+      localStorage.setItem("historicoRecibos", JSON.stringify(historico));
+      alert("Recibo salvo no histórico com sucesso.");
+      limparFormulario();
+      carregarHistorico();
+    }
+
+    // Coleta todos os dados do formulário em objeto
+    function coletarDadosFormulario() {
+      const pecas = [];
+      document.querySelectorAll('#pecas-container > div').forEach(div => {
+        pecas.push({
+          nome: div.querySelector('.nome-peca').value,
+          valor: div.querySelector('.valor-peca').value,
+          quantidade: div.querySelector('.quantidade-peca').value
+        });
+      });
+
+      return {
+        data: document.getElementById("data").value,
+        cliente: document.getElementById("cliente").value,
+        carro: document.getElementById("carro").value,
+        ano: document.getElementById("ano").value,
+        placa: document.getElementById("placa").value,
+        pecas,
+        servicos: document.getElementById("servicos").value,
+        maoDeObra: document.getElementById("maoDeObra").value,
+        total: document.getElementById("total").value,
+        pago: document.getElementById("pago").value,
+        statusPagamento: document.getElementById("statusPagamento").value
+      };
+    }
+
+    // Limpa o formulário para novo recibo
+    function limparFormulario() {
+      document.getElementById("data").value = "";
+      document.getElementById("cliente").value = "";
+      document.getElementById("carro").value = "";
+      document.getElementById("ano").value = "";
+      document.getElementById("placa").value = "";
+      document.getElementById("pecas-container").innerHTML = "";
+      document.getElementById("servicos").value = "";
+      document.getElementById("maoDeObra").value = "";
+      document.getElementById("total").value = "";
+      document.getElementById("pago").value = "";
+      document.getElementById("statusPagamento").value = "";
+    }
+
+    // Carrega histórico do localStorage e mostra na tela
+    function carregarHistorico() {
+      const lista = document.getElementById("lista-historico");
+      lista.innerHTML = "";
+      let historico = JSON.parse(localStorage.getItem("historicoRecibos")) || [];
+
+      if (historico.length === 0) {
+        lista.innerHTML = "<p>Nenhum recibo salvo ainda.</p>";
+        return;
+      }
+
+      historico.forEach((recibo, i) => {
+        const div = document.createElement("div");
+        div.className = "recibo";
+        div.innerHTML = `
+          <strong>${recibo.cliente}</strong> - ${recibo.data}<br/>
+          Carro: ${recibo.carro} (${recibo.ano})<br/>
+          Placa: ${recibo.placa}<br/>
+          Total: R$ ${recibo.total}<br/>
+          Status: ${recibo.statusPagamento}<br/>
+          <button onclick="removerRecibo(${i})">Remover</button>
+        `;
+        lista.appendChild(div);
+      });
+    }
+
+    // Remove recibo do histórico
+    function removerRecibo(index) {
+      let historico = JSON.parse(localStorage.getItem("historicoRecibos")) || [];
+      if (index >= 0 && index < historico.length) {
+        historico.splice(index, 1);
+        localStorage.setItem("historicoRecibos", JSON.stringify(historico));
+        carregarHistorico();
+      }
+    }
+
+   async function gerarPDF() {
+  const { jsPDF } = window.jspdf;
+  const doc = new jsPDF();
+
+  // Adiciona o logo no PDF, se estiver carregado corretamente
+  const logoImg = document.getElementById("logo");
+  if (logoImg && logoImg.complete && logoImg.naturalHeight !== 0) {
+    const canvas = document.createElement("canvas");
+    canvas.width = logoImg.naturalWidth;
+    canvas.height = logoImg.naturalHeight;
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(logoImg, 0, 0);
+    const logoDataURL = canvas.toDataURL("image/png");
+    doc.addImage(logoDataURL, "PNG", 10, 10, 30, 30); // Ajuste tamanho e posição se quiser
+  }
+
+  // Adiciona título com nome da mecânica igual ao site
+  doc.setFontSize(18);
+  doc.text("Auto Mecânica Claudio", 50, 20);
+  doc.setFontSize(14);
+  doc.text("Recibo", 50, 30);
+
+  // Posição inicial para texto dos dados
+  let y = 50;
+  const getValue = id => document.getElementById(id).value.trim();
+
+  // Verifica se o cliente está preenchido para usar no nome do arquivo
+  const nomeCliente = getValue("cliente") || "cliente";
+
+  doc.setFontSize(12);
+
+  // Texto com os dados do recibo
+  [
+    `Data: ${getValue("data")}`,
+    `Cliente: ${nomeCliente}`,
+    `Carro: ${getValue("carro")}`,
+    `Ano: ${getValue("ano")}`,
+    `Placa: ${getValue("placa")}`,
+    `Serviços: ${getValue("servicos")}`,
+    `Mão de Obra: R$ ${getValue("maoDeObra")}`,
+    `Total: R$ ${getValue("total")}`,
+    `Valor Pago: R$ ${getValue("pago")}`,
+    `Status do Pagamento: ${getValue("statusPagamento")}`
+  ].forEach(text => {
+    doc.text(text, 10, y);
+    y += 10;
+  });
+
+  // Lista as peças
+  const pecas = document.querySelectorAll('#pecas-container > div');
+  pecas.forEach((peca, i) => {
+    const nome = peca.querySelector('.nome-peca').value.trim();
+    const valor = peca.querySelector('.valor-peca').value.trim();
+    const qtd = peca.querySelector('.quantidade-peca').value.trim();
+    doc.text(`Peça ${i + 1}: ${nome} - R$ ${valor} x ${qtd}`, 10, y);
+    y += 10;
+  });
+
+  // Salva o PDF com o nome: recibo-NomeCliente.pdf
+  doc.save(`recibo-${nomeCliente}.pdf`);
+}
+
+    // Ao carregar a página, carrega histórico
+    window.onload = () => {
+      carregarHistorico();
+    }
+  </script>
 </body>
 </html>
