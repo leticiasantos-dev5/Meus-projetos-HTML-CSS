@@ -1,0 +1,125 @@
+@charset "UTF-8";
+
+/*import do gogle fonts*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
+/*import do da.font*/
+@font-face {
+    font-family: 'Candy' ;
+    src: url('../fonte/Candy.otf') format('opentype');
+    font-family: normal;
+}
+
+
+
+
+:root { /*paletas e fontes padroes*/
+    --cor0: #9AA29C;
+    --cor1: #F4879A;
+    --cor2: #6E4070;
+    --cor3: #F54B68; 
+    --cor4: #1C1617;
+    --cor5r: #483149;
+     --cor6r: #2c222c;
+
+    --fonte-padrao: Arial, Verdana, Helvetica, sans-serif;
+    --fonte-corpo: "Roboto", sans-serif;
+    --font-titulo: 'Candy' , cursive;
+
+
+}
+
+* { /* configuração global*/
+    margin: 0px;
+    padding: 0px;
+
+}
+
+body {
+    font-family: var(--fonte-padrao);
+    background-color: var(--cor0);
+}
+
+header {
+    padding: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    background-image: linear-gradient(to bottom, var(--cor2), var(--cor5r), var(--cor6r));
+    color: white;
+    margin: auto;
+    text-align: center;
+    font-family: var(--fonte-corpo);
+    font-style: bold;
+    min-width: 150px;
+    border-radius: 10px 10px 0px 0px;
+
+}
+
+
+header > h1 {
+    font-size: 35px;
+    font-family: var(--fonte-corpo);
+
+}
+
+header > p {
+    font-family: var(--fonte-corpo);
+    padding: 15px;
+    font-size: 20px;
+}
+
+
+nav {
+    background-color: var(--cor5r);
+    padding: 10px;
+    box-shadow: 4px 13px 9px 7px rgba(0, 0, 0, 0.455);
+    
+}
+
+nav >a {
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    margin: auto;
+    font-family: var(--fonte-corpo);
+    
+    
+
+}
+
+nav > a:hover{
+    background-color: var(--cor3);
+    transition: 0.5s;
+    text-decoration: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bolder;;
+
+}
+
+main {
+    background-color: white;
+    padding: 10px 10px 10px 10px;
+    min-width: 600px;
+    max-width: 1000px ;
+    margin: auto;
+    border-bottom: 30px;
+    border-radius: 0px 0px 10px 10px;
+    padding: 30px;
+    box-shadow: 10px 8px 10px 9px rgba(0, 0, 0, 0.507);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+        
+    }
+
+    main h1{
+        font-family: var(--fonte-padrao);
+        padding: 10px;
+        font-size: 30px;
+        font-weight: bolder;
+        text-align: justify;
+        background-color: var(--cor1);
+        color: white;
+    }
+
