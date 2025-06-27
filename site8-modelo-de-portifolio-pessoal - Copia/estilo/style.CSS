@@ -60,6 +60,7 @@ header {
 header > h1 {
     font-size: 35px;
     font-family: var(--fonte-corpo);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.495);
 
 }
 
@@ -83,7 +84,7 @@ nav >a {
     padding: 15px;
     margin: auto;
     font-family: var(--fonte-corpo);
-    
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     
 
 }
@@ -95,13 +96,14 @@ nav > a:hover{
     border-radius: 10px;
     color: white;
     font-weight: bolder;;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
 
 }
 
 main {
     background-color: white;
     padding: 10px 10px 10px 10px;
-    min-width: 600px;
+    min-width: 300px;
     max-width: 1000px ;
     margin: auto;
     border-bottom: 30px;
@@ -115,11 +117,218 @@ main {
 
     main h1{
         font-family: var(--fonte-padrao);
-        padding: 10px;
+        padding: 8px;
         font-size: 30px;
-        font-weight: bolder;
+        font-weight: bold;
         text-align: justify;
         background-color: var(--cor1);
         color: white;
+        background-image: linear-gradient(to right,  #f54b67 10%, #f7677fb7 50%, #f47e9100 60%);
+        margin: auto;
+        box-shadow: 0px 0px 0px black;
+        text-indent: 0.3em;
+        min-width: 300px;
+        max-width: 1000px ;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.292);
+        
     }
+
+    main h2{
+        font-family: var(--font-titulo);
+        padding: 15px;
+        font-size: 30px;
+        text-align: justify;
+        color: var(--cor5r);
+        text-indent: 1em;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.181);
+      
+        
+    }
+
+    .universidadelink{
+        color: black;
+        text-decoration: underline;
+    }
+
+   
+
+     main h3 {font-family: var(--font-titulo);
+        padding: 15px;
+        font-size: 25px;
+        text-align: justify;
+        color: var(--cor5r);
+        text-indent: 0.5em;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.181);
+      }
+        
+        
+    
+
+    .titulo-especial {
+    text-align: center;
+    font-size: 32px;
+    color: var(--cor6r); 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+
+   
+
+}
+
+    main p {
+        font-family: var(--fonte-corpo);
+        text-align: justify;
+        text-indent: 30px;
+        padding: 10px;
+        line-height: 30px;
+        font-size: 18px;
+        padding-left: 1px;
+        padding-right: 2px;
+        padding-top: 15px;
+    }
+
+    .especial-p{
+        padding-top: -10px;
+    }
+
+    
+    
+
+
+    li{ font-family: var(--fonte-corpo);
+    text-align: justify;
+    text-indent: 14px;
+    padding: 5px;
+    line-height: 28px;
+    font-size: 16px;
+    padding-left: -5px;
+    padding-right: 5px;
+    padding-top: -2px;
+    list-style-type: none;
+    
+
+    }
+
+    
+
+    .li-especial {
+        background-color: #9aa29c90;
+        border-left: 10px;
+        padding: 10px;
+        border-radius: 10px 10px, ;
+         text-indent: 0.1px;
+        
+    }
+
+    .li-especial1 {
+         background-color: #9aa29c90;
+        border-left: 10px;
+        padding: 10px;
+        text-indent: 0.1px;
+
+        
+    }
+
+    .li-especial2 {
+         background-color: #9aa29c90;
+        border-left: 10px;
+        padding: 10px;
+        text-indent: 0.1px;
+        
+    }
+
+    .marcacao{
+        background-color: #F4879A;
+        border-radius: 1px;
+        padding: 2px 5px
+       
+        
+    }
+
+    li > a{
+       
+        border-radius: 1px;
+        text-decoration: none;
+        text-align: left;
+
+        background-color: var(--cor5r);
+        padding: 3px;
+        border-radius: 10px;
+        padding: 5px;
+      
+    
+    }
+
+    strong {
+        padding: 10px;
+    }
+    
+
+    li a {
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+    text-decoration: none;
+
+    color: white;
+    text-decoration: none;
+    padding: 15px;
+    margin: auto;
+    font-family: var(--fonte-corpo);
+    border-radius: 10px;
+    padding: 8px;
+   
+    
+
+}
+    li a:hover {
+    
+
+    background-color: var(--cor3);
+    transition: 0.5s;
+    text-decoration: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bolder;
+    padding: 5px;
+    
+
+}
+    
+picture img {
+    max-width: 400px; /* Aumentando a largura máxima da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block; /* Garante que a imagem se comporte como bloco */
+    margin: 0 auto; /* Centraliza a imagem horizontalmente */
+  
+        margin: -80px auto;
+     
+}
+
+
+
+footer {
+     background-image: linear-gradient(to bottom, var(--cor2), var(--cor5r), var(--cor6r));
+    color: white;
+    text-align: center;
+    font-size: 0.9em;
+    padding: 5px;
+    
+}
+
+footer a {
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+
+}
+
+footer a:hover {
+    text-decoration: underline;
+    color: var(--cor1);
+    text-align: bold;
+
+}
+    
+
+ 
+
 
